@@ -1,0 +1,68 @@
+One object is dependant on another object (Tightly coupled)
+
+class Laptop{
+    HitachiHD obj1 = new HitachiHD();
+}
+
+what if in future we have to change the HardDrive to SanddiskHD
+
+Classes should be Loosely Coupled (Loose Coupling)
+
+*The Laptop class is tightly coupled to the HitachiHD class, as it directly creates an instance of it using the new keyword.
+*If you want to change the HardDrive implementation (e.g., switch from HitachiHD to SandiskHardDrive), you would need to modify the Laptop class directly.
+*This approach is inflexible, making it harder to adapt to changes or substitute components.
+
+so we use abstraction/interface for HardDrive
+
+class Laptop{
+    HardDrive obj1 = new HitachiHD(); or new SanddiskHD();
+}
+
+Advantages of Dependency Injection:
+
+*Flexibility: It allows for easy substitution of components without modifying the dependent class.
+*Testability: Easier to unit test, as dependencies can be replaced with mock or test implementations.
+*Maintainability: Changes to dependencies don't require modifications to the dependent class, promoting a more modular and maintainable codebase.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+*The @Component annotation in Spring is used to specify that a class should be considered as a Spring bean and managed by the Spring IoC (Inversion of Control) container.
+
+*When you annotate a class with @Component, it signals to Spring that an instance of that class should be created and managed by the container.
+
+*This is particularly useful when you have multiple classes and you want Spring to manage their lifecycle and dependencies.
+
+*When Spring detects a class annotated with @Component, it creates a bean definition for that class in the application context.
+
+*The bean definition includes information about the class, its dependencies, and other configuration settings.
+
+*By default, Spring beans are singleton scoped. This means that, by default, the Spring container creates and manages only one instance of the bean for the entire application context.
+
+*If you want Spring to create a new instance of a bean every time it is requested, you can use the @Scope annotation with the prototype value.
+
+*The @Component annotation in Spring allows you to specify a custom name for the bean using the value attribute, or you can use the @Qualifier annotation to explicitly indicate which bean should be injected when there are multiple beans of the same type
+
+*In summary, @Autowired is used for dependency injection in Spring, allowing related classes to be automatically connected by the Spring IoC container
+
+*This helps in creating loosely coupled and more maintainable applications
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Key Concepts:
+Component Scanning:
+Spring uses component scanning to automatically discover and register classes marked with @Component and related stereotype annotations.
+
+Dependency Injection (DI):
+Spring performs dependency injection by automatically injecting dependencies into beans. This is achieved through annotations like @Autowired and @Qualifier.
+
+Scope:
+The @Scope annotation, although commented out in the Person class, can be used to define the scope of the bean. In this example, the default singleton scope is used.
+
+Lifecycle Management:
+Spring manages the lifecycle of beans, creating them when needed and cleaning them up when the application context is closed.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+By Default
+@Autowired by Type : Searches and injects by the type of the bean.
+@Qualifier by Name : Specifies the name of the bean to inject when there are multiple beans of the same type.
